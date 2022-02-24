@@ -1,4 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
 const { resolve } = require("path");
 const { NODE_ENV } = process.env;
 
@@ -32,6 +35,10 @@ module.exports = {
         test: /\.html$/i,
         loader: "html-loader",
       },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
     ],
   },
   mode: NODE_ENV === "production" ? "production" : "development",
@@ -39,12 +46,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve(__dirname, "index.html"),
     }),
+    new MiniCssExtractPlugin(),
   ],
+  optimization: {
+    minimizer: [`...`, new CssMinimizerPlugin()],
+  },
   devServer: {
     compress: true,
     port: 9000,
     client: {
       logging: "info",
     },
+    watchFiles: ["index.html"],
   },
 };
