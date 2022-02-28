@@ -7,6 +7,8 @@ export interface IWelcomeComponentState {
 }
 
 export class WelcomeComponent extends Component<IWelcomeComponentState> {
+  static readonly MSG_EMPTY_NICKNAME = "Enter your nickname";
+
   get templateOptions() {
     return {
       show: Number(this.state?.nickname?.length) < 1,
@@ -35,11 +37,11 @@ export class WelcomeComponent extends Component<IWelcomeComponentState> {
   };
 
   private submit = (): void => {
-    const input = document.querySelector("#js-nickname-input") as HTMLInputElement;
+    const input = this.el.querySelector("#js-nickname-input") as HTMLInputElement;
     const nickname = input.value.trim();
 
     if (!nickname) {
-      alert("Enter your nickname");
+      alert(WelcomeComponent.MSG_EMPTY_NICKNAME);
       return;
     }
 

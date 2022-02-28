@@ -10,7 +10,7 @@ export abstract class Component<TState = Record<string, never>> {
   abstract templateOptions: Record<string, unknown>;
   abstract template: string;
 
-  constructor(private el: HTMLElement, state?: Partial<TState>) {
+  constructor(protected el: HTMLElement, state?: Partial<TState>) {
     this.el = el;
     if (state) {
       this.state = { ...this.state, ...state };

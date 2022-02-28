@@ -30,10 +30,10 @@ export class ChatComponent extends Component<IChatComponentState> {
   };
 
   private send = (): void => {
-    const btn = document.querySelector(".js-send-message") as HTMLButtonElement;
+    const btn = this.el.querySelector(".js-send-message") as HTMLButtonElement;
     if (btn.disabled) return;
 
-    const input = document.querySelector(".js-message-value") as HTMLInputElement;
+    const input = this.el.querySelector(".js-message-value") as HTMLInputElement;
     const messageText = input.value.trim();
 
     if (!messageText) return;
