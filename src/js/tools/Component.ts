@@ -1,25 +1,19 @@
-import { Emitter } from "nanoevents";
 import { TemplateEngine } from "./TemplateEngine";
 
-export abstract class Component<IEvents, TState = Record<string, never>> {
+export abstract class Component<TState = Record<string, never>> {
   protected state?: Partial<TState>;
-  protected emitter?: Emitter<IEvents>;
 
   protected events: {
-    [key: string]: (ev: Event) => void;
+    [key: string]: (ev: Event | KeyboardEvent) => void;
   } = {};
 
   abstract templateOptions: Record<string, unknown>;
   abstract template: string;
 
-  constructor(private el: HTMLElement, state?: Partial<TState>, emitter?: Emitter<IEvents>) {
+  constructor(private el: HTMLElement, state?: Partial<TState>) {
     this.el = el;
     if (state) {
       this.state = { ...this.state, ...state };
-    }
-
-    if (emitter) {
-      this.emitter = emitter;
     }
 
     setTimeout(() => {

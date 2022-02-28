@@ -19,7 +19,7 @@ export class TemplateEngine implements ITemplateEngine {
   };
 
   render(): string {
-    const re = /<\?([^\?>]+)?\?>/g;
+    const re = /<\?([^?>]+)?\?>/g;
 
     let code: string[] = ["let r=[];\n"];
     let cursor = 0;
