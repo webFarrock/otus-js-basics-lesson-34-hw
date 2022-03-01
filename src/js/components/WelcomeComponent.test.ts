@@ -1,8 +1,8 @@
 import { IWelcomeComponentState, WelcomeComponent } from "./WelcomeComponent";
 import { store } from "../store";
 import { login } from "../store/actions";
+import { sleep } from "../tools/sleep";
 
-const sleep = (x: number) => new Promise((r) => setTimeout(r, x));
 store.dispatch = jest.fn();
 window.alert = jest.fn();
 
