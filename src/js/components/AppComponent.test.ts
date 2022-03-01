@@ -1,5 +1,4 @@
 import { AppComponent } from "./AppComponent";
-import { store } from "../store";
 import { sleep } from "../tools/sleep";
 
 describe("AppComponent", () => {

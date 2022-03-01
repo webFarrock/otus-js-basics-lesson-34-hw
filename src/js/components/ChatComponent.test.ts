@@ -58,7 +58,7 @@ describe("ChatComponent", () => {
       nickname: "John",
       messages: [],
     };
-    const component = new ChatComponent(el, state);
+    new ChatComponent(el, state);
     await sleep(0);
 
     const logoutBtn = el.querySelector(".js-logout-btn") as HTMLButtonElement;
@@ -74,7 +74,7 @@ describe("ChatComponent", () => {
       nickname,
       messages: [],
     };
-    const component = new ChatComponent(el, state);
+    new ChatComponent(el, state);
     await sleep(0);
 
     const sendBtn = el.querySelector(".js-send-message") as HTMLButtonElement;
