@@ -19,4 +19,4 @@ jobs:
 
       - name: Lint test
         run: |
-          npm run test
+          npm run test:coverage
