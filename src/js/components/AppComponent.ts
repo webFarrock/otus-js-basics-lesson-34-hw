@@ -22,17 +22,15 @@ export class AppComponent extends Component {
       nickname: "",
       messages: [],
     };
-    this.chatComponent = new ChatComponent(this.el.querySelector("component-chat") as HTMLElement, chatState);
+    this.chatComponent = new ChatComponent(this.el.querySelector("#component-chat") as HTMLElement, chatState);
 
     const welcomeState: IWelcomeComponentState = {
       nickname: "",
     };
     this.welcomeComponent = new WelcomeComponent(
-      this.el.querySelector("component-welcome") as HTMLElement,
+      this.el.querySelector("#component-welcome") as HTMLElement,
       welcomeState
     );
-
-    this.render();
   }
 
   template = `
